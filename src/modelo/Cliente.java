@@ -1,5 +1,9 @@
 package modelo;
 
+/**
+ * 
+ * @author Uni
+ */
 public class Cliente {
 
     private int idCliente;
