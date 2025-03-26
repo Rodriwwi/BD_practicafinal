@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import modelo.ConexionBD;
 
 /**
@@ -49,8 +50,8 @@ public class ClienteGUI extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
-    public List<String> getColumnas(){
+
+    public List<String> getColumnas() {
         return nomColumnas;
     }
 
@@ -366,7 +367,21 @@ public class ClienteGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        // dialogo borrar
+        int filaSeleccionada = jTable1.getSelectedRow();
+
+        if (filaSeleccionada != -1) {
+            int id = (int) jTable1.getValueAt(filaSeleccionada, 0); // Suponiendo que el ID está en la primera columna
+
+            // Mostrar el diálogo de confirmación
+            DialogoBorrar dialogo = new DialogoBorrar(this,true,id);
+            dialogo.setVisible(true);
+
+            // Recargar la tabla después de eliminar
+            jButton7ActionPerformed(null); // recargar la tabla
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una fila con el ratón para poder eliminar.");
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
