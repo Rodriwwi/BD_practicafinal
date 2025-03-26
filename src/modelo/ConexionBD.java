@@ -39,6 +39,11 @@ public class ConexionBD {
         }
     }
     
+    public Connection getConnection(){
+        if (conn!=null) return conn;
+        else return null;
+    }
+    
     public DatabaseMetaData getMetaData() throws SQLException{
         conectarBaseDatos();
         DatabaseMetaData metaData = conn.getMetaData();
